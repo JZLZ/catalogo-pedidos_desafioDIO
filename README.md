@@ -62,8 +62,7 @@ cd catalogo-pedidos_desafioDIO
 2. **Executar o script para iniciar todos os microsserviços**  
    No PowerShell (Windows):
 ```console
-.
-un-all.ps1
+.run-all.ps1
 ```
 Esse script inicia:
 - **catalog-service**
