@@ -1,0 +1,29 @@
+server:
+  port: 8799
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: catalog-service
+          uri: http://localhost:8100
+          predicates:
+            - Path=/produtos/**
+          filters:
+            - StripPrefix=1
+
+        - id: order-service
+          uri: http://localhost:8200
+          predicates:
+            - Path=/pedidos/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de Produtos - Criar Pedido</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          max-width: 900px;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          border: 1px solid #ccc;
+          padding: 8px 12px;
+          vertical-align: top;
+        }
+        th {
+          background-color: #f2f2f2;
+          text-align: left;
+        }
+        button {
+          margin-top: 20px;
+          padding: 10px 20px;
+          font-size: 1em;
+          cursor: pointer;
+        }
+        #status {
+          margin-top: 15px;
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Catálogo de Produtos</h1>
+
+<form id="orderForm">
+    <table id="productsTable">
+        <thead>
+        <tr>
+            <th>Selecionar</th>
+            <th>Nome</th>
+            <th>Preço (R$)</th>
+            <th>Descrição</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Produtos vão aparecer aqui -->
+        </tbody>
+    </table>
+
+    <button type="submit">Criar Pedido</button>
+</form>
+
+<div id="status"></div>
+
+<script>
+    async function fetchProducts() {
+      try {
+        const response = await fetch('http://localhost:8100/all');
+        if (!response.ok) throw new Error('Erro ao buscar produtos');
+
+        const products = await response.json();
+
+        const tbody = document.querySelector('#productsTable tbody');
+        tbody.innerHTML = '';
+
+        products.sort((a, b) => a.nome.localeCompare(b.nome));
+
+        products.forEach(prod => {
+          const tr = document.createElement('tr');
+
+          // Checkbox
+          const tdCheckbox = document.createElement('td');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.value = prod.id;
+          tdCheckbox.appendChild(checkbox);
+
+          // Nome
+          const tdNome = document.createElement('td');
+          tdNome.textContent = prod.nome || '-';
+
+          // Preço formatado
+          const tdPreco = document.createElement('td');
+          tdPreco.textContent = prod.preco !== undefined ? prod.preco.toFixed(2) : '-';
+
+          // Descrição
+          const tdDescricao = document.createElement('td');
+          tdDescricao.textContent = prod.descricao || '-';
+
+          tr.appendChild(tdCheckbox);
+          tr.appendChild(tdNome);
+          tr.appendChild(tdPreco);
+          tr.appendChild(tdDescricao);
+
+          tbody.appendChild(tr);
+        });
+
+      } catch (error) {
+        console.error(error);
+        alert('Não foi possível carregar os produtos.');
+      }
+    }
+
+    async function createOrder(event) {
+      event.preventDefault();
+
+      const checkboxes = document.querySelectorAll('#productsTable tbody input[type="checkbox"]:checked');
+      if (checkboxes.length === 0) {
+        alert('Selecione pelo menos um produto para criar o pedido.');
+        return;
+      }
+
+      const selectedIds = Array.from(checkboxes).map(cb => Number(cb.value));
+
+      const orderRequest = { ids: selectedIds };
+
+      try {
+        const response = await fetch('http://localhost:8200/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderRequest)
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao criar pedido');
+        }
+
+        const result = await response.json();
+
+        document.getElementById('status').textContent = `Pedido criado com sucesso! Total: R$ ${result.total.toFixed(2)}`;
+
+        // Limpa seleção
+        checkboxes.forEach(cb => cb.checked = false);
+
+      } catch (error) {
+        console.error(error);
+        alert('Erro ao criar pedido. Tente novamente.');
+      }
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', createOrder);
+
+    // Carregar produtos ao abrir a página
+    fetchProducts();
+</script>
+
+</body>
+</html>

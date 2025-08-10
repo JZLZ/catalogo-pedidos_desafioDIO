@@ -1,0 +1,181 @@
+/* ================================
+   Reset & Base
+=================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f8fa;
+    color: #333;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+/* ================================
+   Layout & Containers
+=================================== */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+h1, h2 {
+    color: #222;
+    margin-bottom: 15px;
+}
+h1 {
+    text-align: center;
+}
+
+/* ================================
+   Links
+=================================== */
+a {
+    display: block;
+    margin: 8px 0;
+    color: #2563eb;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   Cards (Pedidos)
+=================================== */
+.pedido {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+.pedido-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+/* ================================
+   Table
+=================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+    text-align: left;
+}
+th {
+    background-color: #f0f0f0;
+    color: #333;
+}
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* ================================
+   Empty messages
+=================================== */
+.empty-message {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 15px;
+}
+
+/* ================================
+   Buttons
+=================================== */
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #1e40af;
+}
+button.danger {
+    background-color: #dc2626;
+}
+button.danger:hover {
+    background-color: #b91c1c;
+}
+
+/* ================================
+   Forms
+=================================== */
+form {
+    margin-top: 15px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+input[type="text"], input[type="number"] {
+    padding: 8px;
+    width: 100%;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* ================================
+   Info (Frontpage)
+=================================== */
+.info {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ================================
+   Totals
+=================================== */
+#totalValue {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* ================================
+   Responsive
+=================================== */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        margin-bottom: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 8px;
+    }
+    td {
+        border: none;
+        padding: 6px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
