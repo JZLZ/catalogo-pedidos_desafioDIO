@@ -1,7 +1,7 @@
-package com.jzlz.catalog.service;
+package com.jzlz.catalog_service.service;
 
-import com.jzlz.catalog.entity.Product;
-import com.jzlz.catalog.repository.ProductRepository;
+import com.jzlz.catalog_service.entity.Product;
+import com.jzlz.catalog_service.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

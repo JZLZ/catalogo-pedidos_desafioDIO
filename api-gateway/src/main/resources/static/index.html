@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>API Gateway - Frontpage</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">Sistema de Pedidos</div>
+    <ul class="nav-links">
+        <li><a href="catalog.html">Catálogo</a></li>
+        <li><a href="pedidos.html">Pedidos</a></li>
+    </ul>
+</nav>
+<h1>Bem-vindo ao API Gateway</h1>
+<p>Aqui estão os microsserviços disponíveis:</p>
+
+<a href="http://localhost:8761" target="_blank">
+    <i class="fas fa-leaf"></i> Spring Eureka
+</a>
+<a href="catalog.html" target="_blank">📦Catálogo de Produtos</a>
+<a href="pedidos.html" target="_blank">🧾Listas de Pedidos</a>
+
+<div class="info">
+    <p><strong>Data:</strong> <span id="date"></span></p>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>

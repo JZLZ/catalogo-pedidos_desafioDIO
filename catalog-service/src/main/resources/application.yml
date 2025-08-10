@@ -4,8 +4,24 @@ server:
 spring:
   application:
     name: catalog-service
+  datasource:
+    url: jdbc:h2:file:./data/catalogo-db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  H2:
+    console:
+      enable: true
+      pach: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+      register-with-eureka: true
+      fetch-registry: true

@@ -1,6 +1,6 @@
-package com.jzlz.catalog.repository;
+package com.jzlz.catalog_service.repository;
 
-import com.jzlz.catalog.entity.Product;
+import com.jzlz.catalog_service.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {

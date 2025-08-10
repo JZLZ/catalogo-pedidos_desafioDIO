@@ -21,6 +21,18 @@ spring:
           filters:
             - StripPrefix=1
 
+      # 🔹 Configuração de CORS global no Gateway
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders: "*"
+
 eureka:
   client:
     service-url:

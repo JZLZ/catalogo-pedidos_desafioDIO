@@ -1,4 +1,4 @@
-package com.jzlz.catalog.entity;
+package com.jzlz.catalog_service.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
