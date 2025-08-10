@@ -17,10 +17,10 @@ Consiste em:
 - Criar novos produtos
 - Excluir produtos existentes  
   Cada produto possui:
-- **ID**
-- **Nome**
-- **Descrição**
-- **Preço**
+  - **ID**
+  - **Nome**
+  - **Descrição**
+  - **Preço**
 
 ### **Microsserviço 2 - Pedidos**
 - Criar pedidos enviando um array de IDs de produtos selecionados.
